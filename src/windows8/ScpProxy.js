@@ -1,27 +1,37 @@
-/* global console, exports, require */
-    'use strict';
+var hscp = require('com.tlantic.plugins.ssh.ScpHandler');
 
-    // performs copy itself
-     var doCopy = function (usr, pwd, src, dst) {
-        console.log('- Copied ', src, ' to ', dst, ' with credentials ', usr, ':',pwd);
-     };
+module.exports = {
+    connect: function(win, fail) {
+        'use strict';
 
-    // copy from loca to remote
-    exports.copyToRemote = function (win, fail, args) {
-        // validating parameters
-        if (args.length !== 4) {
-            fail('Missing arguments for "copyToRemote" action.');
-            return;
+        fail('Not implemented');
 
-        } else {
+    },
 
-            // launching copy
-            doCopy.apply(this, args);
+    disconnect: function(win, fail) {
+        'use strict';
 
-            // ending with success
-            win();
-        }
+        fail('Not implemented');
+    },
 
-    };
+    disconnectAll: function(win, fail) {
+        'use strict';
 
-    require('cordova/windows8/commandProxy').add('SecureCopy', exports);
+        fail('Not implemented');
+    },
+
+    authenticateByKeyboard: function(win, fail) {
+        'use strict';
+
+        fail('Not implemented');
+    },
+
+    scp: function(win, fail) {
+        'use strict';
+
+        fail('Not implemented');
+    }
+
+};
+
+require('cordova/windows8/commandProxy').add('SSH', module.exports);

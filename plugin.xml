@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-    id="com.tlantic.plugins.ssh"
-    version="0.1.0">
+<?xml version="1.0" encoding="UTF-8" ?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="com.tlantic.plugins.ssh" version="0.1.0">
     <name>SSH</name>
     <description>Tlantic SSH plugin</description>
     <license>GPL</license>
@@ -32,6 +30,20 @@
         <!-- SSH code -->
         <header-file src="src/ios/SSHChannel.h" />
         <source-file src="src/ios/SSHChannel.m" />
+    </platform>
+
+    <platform name="windows8">
+        <js-module src="src/windows8/CameraHandler.js" name="CameraHandler">
+            <merges target="" />
+        </js-module>
+        <js-module src="src/windows8/ScannerProxy.js" name="ScannerProxy">
+            <merges target="" />
+        </js-module>
+        <framework src="src/windows8/TlantSSH.winmd" custom="true" />
+
+        <config-file target="package.appxmanifest" parent="/Package/Capabilities">
+            <Capability Name="internetClient" />
+        </config-file>
     </platform>
 
 </plugin>
