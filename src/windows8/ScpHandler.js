@@ -40,7 +40,7 @@ exports.disconnect = function(win, fail, connection) {
         fail(e);
         return;
     }
-}
+};
 
 
 require('cordova/windows8/commandProxy').add('ScpHandler', exports);

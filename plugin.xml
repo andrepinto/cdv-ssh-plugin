@@ -33,10 +33,10 @@
     </platform>
 
     <platform name="windows8">
-        <js-module src="src/windows8/CameraHandler.js" name="CameraHandler">
+        <js-module src="src/windows8/ScpHandler.js" name="ScpHandler">
             <merges target="" />
         </js-module>
-        <js-module src="src/windows8/ScannerProxy.js" name="ScannerProxy">
+        <js-module src="src/windows8/ScpProxy.js" name="ScpProxy">
             <merges target="" />
         </js-module>
         <framework src="src/windows8/TlantSSH.winmd" custom="true" />
