@@ -1,37 +1,102 @@
-var hscp = require('com.tlantic.plugins.ssh.ScpHandler');
+cordova.define("com.tlantic.plugins.ssh.ScpProxy", function(require, exports, module) {
 
-module.exports = {
-    connect: function(win, fail) {
-        'use strict';
+    var hscp = require('com.tlantic.plugins.ssh.ScpHandler');
 
-        fail('Not implemented');
+    module.exports = {
+        connect: function(win, fail, args) {
+            'use strict';
 
-    },
+            if (args.length !== 4) {
+                fail('Missing arguments for "connect" action.');
+                return;
 
-    disconnect: function(win, fail) {
-        'use strict';
+            } else {
 
-        fail('Not implemented');
-    },
+                try {
+                    var host, port, username, password;
 
-    disconnectAll: function(win, fail) {
-        'use strict';
+                    host = args[0];
+                    port = args[1];
+                    username = args[2];
+                    password = args[3];
 
-        fail('Not implemented');
-    },
+                    hscp.connect(win, fail, ip, username, password, port);
+                    return;
 
-    authenticateByKeyboard: function(win, fail) {
-        'use strict';
+                } catch (e) {
+                    fail(e);
+                    return;
+                }
+            }
 
-        fail('Not implemented');
-    },
+        },
 
-    scp: function(win, fail) {
-        'use strict';
+        disconnect: function(win, fail, args) {
+            'use strict';
 
-        fail('Not implemented');
-    }
+            if (args.length !== 1) {
+                fail('Missing arguments for "connect" action.');
+                return;
 
-};
+            } else {
 
-require('cordova/windows8/commandProxy').add('SSH', module.exports);
+                try {
+                    var connectionId, file, path;
+
+                    connectionId = args[0];
+
+
+                    hscp.disconnect(win, fail, connection);
+                    return;
+
+                } catch (e) {
+                    fail(e);
+                    return;
+                }
+            }
+        },
+
+        disconnectAll: function(win, fail, args) {
+            'use strict';
+
+            fail('Not implemented');
+        },
+
+        authenticateByKeyboard: function(win, fail, args) {
+            'use strict';
+
+            fail('Not implemented');
+        },
+
+        scp: function(win, fail, args) {
+            'use strict';
+
+            if (args.length !== 3) {
+                fail('Missing arguments for "connect" action.');
+                return;
+
+            } else {
+
+                try {
+                    var connectionId, file, path;
+
+                    connectionId = args[0];
+                    file = args[1];
+                    path = args[2];
+
+
+                    hscp.scp(win, fail, connection, file, path);
+                    return;
+
+                } catch (e) {
+                    fail(e);
+                    return;
+                }
+            }
+        }
+
+    };
+
+    require('cordova/windows8/commandProxy').add('SSH', module.exports);
+
+});

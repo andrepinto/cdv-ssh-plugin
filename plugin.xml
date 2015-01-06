@@ -40,6 +40,7 @@
             <merges target="" />
         </js-module>
         <framework src="src/windows8/TlantSSH.winmd" custom="true" />
+        <framework src="src/windows8/Tamir.SharpSSH.dll" custom="true" />
 
         <config-file target="package.appxmanifest" parent="/Package/Capabilities">
             <Capability Name="internetClient" />
