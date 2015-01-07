@@ -20,7 +20,7 @@ cordova.define("com.tlantic.plugins.ssh.ScpProxy", function(require, exports, mo
                     username = args[2];
                     password = args[3];
 
-                    hscp.connect(win, fail, host, port, password, username);
+                    hscp.connect(win, fail, host, username, password, port);
                     return;
 
                 } catch (e) {
